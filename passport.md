@@ -14,4 +14,3 @@
 | **Trust your builds** | Add artifact attestation to your CI workflows – generate and sign an SBOM during the build and attach it to each release. | - [ ] | NIST SSDF PS.2.1 and PS.3.2 (publish integrity info and provenance); SLSA Build L2/L3 (hosted build platform with signed provenance); CRA requires SBOM and secure update distribution. |
 | **Track and report** | Use the Security Overview to generate monthly reports. Share progress and metrics with stakeholders and celebrate your achievements\! | - [ ] | NIST SSDF RV.2.1 (analyse vulnerabilities to plan remediation); CRA recommends ongoing monitoring and reporting of vulnerability handling. |
 |  |  |  |  |
-
