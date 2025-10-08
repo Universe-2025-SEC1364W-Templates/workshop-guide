@@ -1,6 +1,6 @@
 # SEC1364W - Secure more, stress less with a risk-based rollout of GitHub Advanced Security
 
-__Facilitated by [@theztefan](https://github.com/theztefan) and [@CallMeGreg](https://github.com/CallMeGreg)__
+_Facilitated by [@theztefan](https://github.com/theztefan) and [@CallMeGreg](https://github.com/CallMeGreg)_
 
 ## Session Summary
 
