@@ -27,7 +27,7 @@ Your team plays the role of the AppSec group at **Acme Corp**.  A breach in the 
 
 ## Exercises
 
-This workshop is divided into three sections, each with multiple exercises.  You should be able to complete all exercises in about 1.30 hours. If you get stuck, don't worry!
+This workshop is divided into three sections, each with multiple exercises.  You should be able to complete all exercises in about 1.30 hours. If you get stuck, don't worry, just raise your hand and we will come by to help you out!
 
 Let's get started.
 
