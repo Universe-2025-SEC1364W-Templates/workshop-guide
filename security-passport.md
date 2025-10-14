@@ -2,7 +2,7 @@
 
 Treat this as your security passport: complete each mission and check the box to earn your "stamp".
 
-- [ ] 1. **Set the ground rules**  
+- [ ] 1. **Classify your assets**  
   - **How to win:** Decide and document your security criteria. Create a custom property on each repo for its risk tier and set clear approval rules.  
   - **Refs:** NIST SSDF PO.4.1–PO.4.2 (define criteria and track software security checks).
 
@@ -34,7 +34,7 @@ Treat this as your security passport: complete each mission and check the box to
   - **How to win:** Monitor Dependabot and CodeQL alerts in the Security Overview. Use security campaigns to prioritise and fix issues.  
   - **Refs:** NIST SSDF RV.1.1 (gather vulnerability information) and RV.2.1 (analyse each vulnerability to plan remediation); CRA mandates regular testing and vulnerability remediation.
 
-- [ ] 9. **Set the rules**  
+- [ ] 9. **Put up the guardrails**  
   - **How to win:** Create organization‑level rulesets for each risk tier. Require reviews, dependency review, and zero critical issues before merging.  
   - **Refs:** NIST SSDF PW.7.1/PW.8.1 (decide on code reviews and testing) and PS.1.1 (least‑privilege controls); CRA essential requirement for secure‑by‑default configuration.
 
