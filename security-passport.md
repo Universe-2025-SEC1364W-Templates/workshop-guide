@@ -1,6 +1,6 @@
 # Security Passport
 
-_Switch the ⏳ into ✔️ once have completed the relevant exercises_
+Treat this as your security passport: complete each mission and check the box to earn your "stamp".
 
 - [ ] 1. **Set the ground rules**  
   - **How to win:** Decide and document your security criteria. Create a custom property on each repo for its risk tier and set clear approval rules.  
