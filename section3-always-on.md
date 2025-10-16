@@ -155,7 +155,7 @@ Create a personal access token with the **read:packages** scope:
 In your terminal, run the following command to authenticate to [ghcr.io](http://ghcr.io):
 
 ```
-docker login ghcr.io -u <your_handle>@github.com
+docker login ghcr.io -u <YOUR_HANDLE>@github.com
 ```
 
 When prompted, paste in the personal access token. This will allow the GitHub CLI to reach out to [ghcr.io](http://ghcr.io) on your behalf to fetch the container image details.
