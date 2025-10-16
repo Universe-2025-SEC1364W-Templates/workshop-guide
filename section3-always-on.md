@@ -154,7 +154,6 @@ Create a personal access token with the **read:packages** scope:
 
 In your terminal, run the following command to authenticate to [ghcr.io](http://ghcr.io):
 
-MacOS:
 ```
 docker login ghcr.io -u <your_handle>@github.com
 ```
@@ -187,14 +186,26 @@ set GITHUB_ORG=<YOUR_ORG_NAME>
 
 Confirm the origin details for one of the newly released container images, **auth v1.0.0**:
 
+MacOS:
 ```
 gh attestation verify oci://ghcr.io/$GITHUB_ORG/auth:1.0.0 --owner $GITHUB_ORG --predicate-type https://cyclonedx.org/bom
 ```
 
+Windows:
+```
+gh attestation verify oci://ghcr.io/%GITHUB_ORG%/auth:1.0.0 --owner %GITHUB_ORG% --predicate-type https://cyclonedx.org/bom
+```
+
 Review the SBOM details for the newly released **auth v1.0.0** container image:
 
+MacOS:
 ```
 gh attestation verify oci://ghcr.io/$GITHUB_ORG/auth:1.0.0 --owner $GITHUB_ORG --predicate-type https://cyclonedx.org/bom --format json --jq '.[].verificationResult.statement.predicate'
+```
+
+Windows:
+```
+gh attestation verify oci://ghcr.io/%GITHUB_ORG%/auth:1.0.0 --owner %GITHUB_ORG% --predicate-type https://cyclonedx.org/bom --format json --jq '.[].verificationResult.statement.predicate'
 ```
 
 This exercise moves the storyline from **scanning code for vulnerabilities** to **proving your supply chain is trustworthy**. You've now established the foundation for **transparent and verifiable software consumption**.
