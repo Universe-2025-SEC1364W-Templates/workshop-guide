@@ -95,9 +95,9 @@ The point is to give software consumers confidence that:
 
 In this exercise, we'll explore how to accomplish these goals all with the help of GitHub Actions, Artifact Attestations, and the GitHub CLI.
 
-### Step 1 - Generate an SBOM with the GitHub API
+### Step 1 - Generate an SBOM
 
-We'll be working in the **mona-gallery-universe** repo for this exercise. Start by adding the following step at the end of the **release-attestation.yml** GitHub Actions workflow file to create an SBOM for each container image:
+We'll be working in the **mona-gallery** repo for this exercise. Start by adding the following step at the end of the **release-attestation.yml** GitHub Actions workflow file to create an SBOM for each container image:
 
 ```
 - name: Generate SBOM for built image
@@ -154,6 +154,7 @@ Create a personal access token with the **read:packages** scope:
 
 In your terminal, run the following command to authenticate to [ghcr.io](http://ghcr.io):
 
+MacOS:
 ```
 docker login ghcr.io -u <your_handle>@github.com
 ```
@@ -162,10 +163,24 @@ When prompted, paste in the personal access token. This will allow the GitHub CL
 
 ### Step 5 - Verify the attestation
 
-For easier copy/paste throughout the next few steps, set an environment variable equal to your organization name:
+In order to fetch the attestations for a given image, we need to authenticate with an account that has access to do so.
+
+Run the following command to authneticate the GitHub CLI with your account:
 
 ```
+gh auth login
+```
+
+For easier copy/paste throughout the next few steps, set an environment variable equal to your organization name:
+
+MacOS:
+```
 export GITHUB_ORG=<YOUR_ORG_NAME>
+```
+
+Windows:
+```
+set GITHUB_ORG=<YOUR_ORG_NAME>
 ```
 
 *Pause* - ensure that the Actions workflow from earlier has completed successfully.
@@ -173,24 +188,17 @@ export GITHUB_ORG=<YOUR_ORG_NAME>
 Confirm the origin details for one of the newly released container images, **auth v1.0.0**:
 
 ```
-gh attestation verify oci://ghcr.io/$GITHUB_ORG/auth:1.0.0 \
-  --owner $GITHUB_ORG \
-  --predicate-type https://cyclonedx.org/bom
+gh attestation verify oci://ghcr.io/$GITHUB_ORG/auth:1.0.0 --owner $GITHUB_ORG --predicate-type https://cyclonedx.org/bom
 ```
 
 Review the SBOM details for the newly released **auth v1.0.0** container image:
 
 ```
-gh attestation verify oci://ghcr.io/$GITHUB_ORG/auth:1.0.0 \
-  --owner $GITHUB_ORG \
-  --predicate-type https://cyclonedx.org/bom \
-  --format json \
-  --jq '.[].verificationResult.statement.predicate'
+gh attestation verify oci://ghcr.io/$GITHUB_ORG/auth:1.0.0 --owner $GITHUB_ORG --predicate-type https://cyclonedx.org/bom --format json --jq '.[].verificationResult.statement.predicate'
 ```
 
 This exercise moves the storyline from **scanning code for vulnerabilities** to **proving your supply chain is trustworthy**. You've now established the foundation for **transparent and verifiable software consumption**.
 
 ## Security Passport checkpoint
 
-Return to the [Security Passport](security-passport.md) and mark off the first section.  You should have completed the following stamps:
-TODO
+Return to the [Security Passport](security-passport.md) and mark off the remaining sections. Congratulations, we've completed our security _world tour_! 🚀
