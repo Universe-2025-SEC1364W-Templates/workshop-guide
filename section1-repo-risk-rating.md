@@ -1,23 +1,25 @@
 
 # Repo risk rating: From Wild West to Structure
 
+<img src="imgs/section1.png" alt="Section 1: Repo risk rating"/>
+
 Your team plays the role of the AppSec group at **Acme Corp**.  A breach in the *Mona Gallery* SaaS application exposed plain‑text secrets in configuration files and vulnerable dependencies.  Attackers phished a developer, cloned the main repository, discovered secrets, exploited outdated libraries and extracted customer data.  Leadership wants to tighten security without hurting developer experience or hindering GitHub Copilot adoption.  Your mission is to assess risk and implement controls aligned with NIST SSDF, SLSA and the upcoming Cyber Resilience Act.
 
 Acme Corp's GitHub Enterprise setup currently consists of a single organization with 10 repositories and no centralized security controls.  Each exercise in this workshop builds toward structured governance:
 
-1. **Spot hot spots** – assess how much damage secrets can cause and where leaks are located.  
-2. **Categorize repositories** – decide which repositories are business‑critical and which are not.  
-3. **Add custom properties** – encode the categorization in GitHub so it can be used later.  
-4. **Create security configurations** – build two different sets of security configurations (critical vs. non‑critical) and connect them to your categorization.
+1. **Spot hot spots** - assess how much damage secrets can cause and where leaks are located.  
+2. **Categorize repositories** - decide which repositories are business‑critical and which are not.  
+3. **Add custom properties** - encode the categorization in GitHub so it can be used later.  
+4. **Create security configurations** - build two different sets of security configurations (critical vs. non‑critical) and connect them to your categorization.
 
-## Exercise 1 – Spot the Hot Spots: Secret Risk Assessment
+## Exercise 1 - Spot the Hot Spots: Secret Risk Assessment
 
 The **secret risk assessment** is a free on‑demand scan available to GitHub Team and Enterprise organizations.  It examines the code in all repositories (including archived ones) and produces a report showing:
 
-- **Total secrets**, **public leaks** and **preventable leaks** – aggregated counts of secrets exposed and how many leaks could be blocked by push protection  
-- **Secret locations** – where secrets were found (code in branches, tags and archived repos)  
-- **Secret categories** – distribution of partner secrets (e.g., API keys) and generic secrets like SSH keys or JWTs  
-- **Repositories with leaks** – which repos contain the leaks
+- **Total secrets**, **public leaks** and **preventable leaks** - aggregated counts of secrets exposed and how many leaks could be blocked by push protection  
+- **Secret locations** - where secrets were found (code in branches, tags and archived repos)  
+- **Secret categories** - distribution of partner secrets (e.g., API keys) and generic secrets like SSH keys or JWTs  
+- **Repositories with leaks** - which repos contain the leaks
 
 Read more [here](https://docs.github.com/en/enterprise-cloud@latest/code-security/securing-your-organization/understanding-your-organizations-exposure-to-leaked-secrets/about-secret-risk-assessment).
 
@@ -38,13 +40,13 @@ To run a similar security risk assessment on your own organization(s) after this
 - The report counts secrets across public and private repos and provides categories of secrets and impacted repos, helping you prioritize remediation.  
 - The free assessment scans code only; GitHub Secret Protection (paid) extends scanning to pull requests, issues, wiki pages and discussions.
 
-## Exercise 2 – Repository Categorization
+## Exercise 2 - Repository Categorization
 
 Before applying security controls, decide which repositories are **business‑critical**, **standard** or **low risk**.  This risk rating directly maps to how strong the security controls should be.  For Acme, the team prepared a document listing each repository and its category.  Review it and think about:
 
-- **Critical (business‑critical)** – contains customer data, production infrastructure or is widely used (e.g., *mona‑gallery*, *mona*, *terragoat‑iac*).  A compromise of these repos has severe impact.  
-- **Standard** – internal tools that support the business but aren't directly customer‑facing (e.g., *juice‑shop*, *moshi* library).  
-- **Low risk** – early‑stage experiments, documentation or configuration repos.
+- **Critical (business‑critical)** - contains customer data, production infrastructure or is widely used (e.g., *mona‑gallery*, *mona*, *terragoat‑iac*).  A compromise of these repos has severe impact.  
+- **Standard** - internal tools that support the business but aren't directly customer‑facing (e.g., *juice‑shop*, *moshi* library).  
+- **Low risk** - early‑stage experiments, documentation or configuration repos.
 
 The following table summarizes each repository in the Acme Corp organization and assigns it to a risk tier (critical, standard, or low). These tiers are based on how important the repository is to the business and how severe the impact would be if it were compromised. Use this classification when creating custom properties and security configurations in later exercises.
 
@@ -65,11 +67,11 @@ The following table summarizes each repository in the Acme Corp organization and
 
 For **Exercise 3** you will create custom properties for each risk tier (e.g., `critical`, `standard`, and `low`) and tag the repositories accordingly. When creating security configurations in **Exercise 4**, apply a stricter configuration to all critical repositories and a more flexible configuration to standard and low‑risk repositories.
 
-## Exercise 3 – Creating Custom Properties
+## Exercise 3 - Creating Custom Properties
 
 Custom properties add metadata to repositories so you can filter them later when applying rulesets or security configurations.
 
-### Step 1 – Add custom properties for risk categories
+### Step 1 - Add custom properties for risk categories
 
 1. In the upper‑right corner of GitHub, click your profile picture and choose **Organizations**.  
 2. Next to your organization, click **Settings**.  
@@ -80,7 +82,7 @@ Custom properties add metadata to repositories so you can filter them later when
 
 **Alternative:** Instead of three booleans, you could define a single `risk-category` property with allowed values `critical`, `standard` and `low` (single select or multi select).  This keeps metadata normalized and simplifies reporting.
 
-### Step 2 – Set property values for repositories
+### Step 2 - Set property values for repositories
 
 1. Return to **Custom properties** in your organization settings.  
 2. Select the **Set values** tab.  
@@ -89,16 +91,16 @@ Custom properties add metadata to repositories so you can filter them later when
 
 After this exercise, each repository has metadata indicating whether it's critical, standard or low risk. You can search or filter repositories by these properties using the **Repositories** page (type `prop` in the search bar).
 
-## Exercise 4 – Building Security Configurations
+## Exercise 4 - Building Security Configurations
 
 Security configurations are collections of enablement settings for GitHub's security features (secret scanning, dependency scanning, code scanning and more). They let you apply the same settings to many repositories at once and optionally **enforce** those settings so repository admins cannot override them.
 
 This exercise creates two configurations:
 
-- **Critical repositories** – strict settings enabled and enforced.  
-- **Non‑critical repositories** – similar features enabled but not enforced (developers can adjust if needed).
+- **Critical repositories** - strict settings enabled and enforced.  
+- **Non‑critical repositories** - similar features enabled but not enforced (developers can adjust if needed).
 
-### Step 1 – Create the **Critical** security configuration
+### Step 1 - Create the **Critical** security configuration
 
 1. Navigate to your organization settings and choose **Advanced Security -> Configurations**.  
 2. Click **New configuration**.  
@@ -120,7 +122,7 @@ This exercise creates two configurations:
 8. In the **Policy** section, select **Use as default for newly created repositories** to `None` as we don't want to treat every new repository as **Critical** and set **Enforce configuration** to block repository owners from disabling any enabled features (`Enforce`).  
 9. Click **Save configuration**.
 
-### Step 2 – Create the **Non‑critical** security configuration
+### Step 2 - Create the **Non‑critical** security configuration
 
 Repeat the steps above to create a second configuration named *Non‑critical repos*.
 
@@ -135,11 +137,12 @@ Differences:
 
 By the end of this exercise, you have:
 
-- **Structured the "wild west”** – central governance exists through custom properties and security configurations.  
+- **Structured the "wild west"** - central governance exists through custom properties and security configurations.  
 - **Prepared security configurations** - you have created central security configurations for controlled rollout of the new policies.  
-- **Mapped risk categories to security configurations** – critical repos get strict enforcement; others receive recommended settings without enforcement.
+- **Mapped risk categories to security configurations** - critical repos get strict enforcement; others receive recommended settings without enforcement.
 
 ## Security Passport checkpoint
 
 Return to the [Security Passport](security-passport.md) and mark off the first section.  You should have completed the following stamps:
-TODO
+
+- [x] 1. Classify your assets

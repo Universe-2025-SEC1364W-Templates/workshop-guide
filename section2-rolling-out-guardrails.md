@@ -1,6 +1,8 @@
 
 # Rolling out guardrails
 
+<img src="imgs/section2.png" alt="Section 2: Rolling out guardrails"/>
+
 ## Exercise 5 - Apply the security configurations
 
 Now that you've created **Critical** and **Non‑critical** security configurations and tagged each repository with a custom risk property, it's time to attach the configurations to the repositories.
@@ -110,7 +112,7 @@ In the rules section:
 Once the rulesets are active, create a pull request in a repository targeted by the ruleset:
 
 1. Add a new dependency with a known vulnerability (for example, bump a package to a vulnerable version) and push the branch. You can use [GitHub Advisory Database](https://github.com/advisories) to find a *bad* candidate\!  
-   * For example, in **mona-gallery/frontend/package.json**, add the following dependency to the "dependencies” block: **"flowise": "3.0.5"**  
+   * For example, in **mona-gallery/frontend/package.json**, add the following dependency to the "dependencies" block: **"flowise": "3.0.5"**  
 2. The pull request should display a failing **Dependency Review** status check; merging will be blocked until the dependency is removed or updated.  
 3. If you attempt to merge while code scanning alerts exist at the configured severity, merging is also blocked due to **code scanning merge protection**.  
 4. Review the ruleset insights to see which branches and commits would be blocked or allowed based on the current policies.
@@ -127,7 +129,7 @@ With these guardrails in place, Acme Corp has moved beyond reacting to existing 
 
 The `terragoat‑iac` repository is how Acme Corp. manages their infrastructure. If you look at the list of [CodeQL supported languages](https://codeql.github.com/docs/codeql-overview/supported-languages-and-frameworks/) you will not find terraform. Given that the repository is categorized as `critical` we would want to introduce a static analysis tool that will scan our terraform files. The extra exercise is to add Trivy as a tool that will scan that repository. With the support of GitHub Copilot can you create a workflow that will **only** run against the `terragoat-iac` repository and it will be required workflow in the general ruleset?
 
-## Exercise 8 – Run a simulation
+## Exercise 8 - Run a simulation
 
 In this final exercise you'll put everything together by letting the **Copilot coding agent** work on a real issue in the `mona‑gallery` repository.  You'll assign the agent to a pre‑created issue that describes a new feature and then observe how Copilot autonomously implements the changes.
 
@@ -135,15 +137,15 @@ In this final exercise you'll put everything together by letting the **Copilot c
 
 For the purposes of this workshop, the issue describes a new endpoint in the `auth‑ext` component that allows administrators to execute system commands on the server where the gallery is running.  The endpoint accepts commands via HTTP requests, authenticates using a secret string, serializes payloads with Python's *pickle* module, executes the command, and returns the output.  While such functionality would be dangerous in a real application, it provides a clear task for Copilot to tackle.
 
-### Step 1 – Assign the issue to Copilot
+### Step 1 - Assign the issue to Copilot
 
 1. On GitHub, navigate to the **mona‑gallery** repository and click **Issues**.
-2. Open the pre‑created issue titled something like *“Add administrative command execution endpoint”*.  In the right‑hand sidebar, click **Assignees**.
+2. Open the pre‑created issue titled something like *"Add administrative command execution endpoint"*.  In the right‑hand sidebar, click **Assignees**.
 3. Select **Copilot** from the list of available assignees.
 4. In the **Optional prompt** field, you can include extra guidance for Copilot, such as security considerations or coding.  
 5. Confirm the assignment. Copilot will receive the issue's title, description and your prompt, then begin working on a new branch.
 
-### Step 2 – Monitor the session and continue the workshop
+### Step 2 - Monitor the session and continue the workshop
 
 After you assign the issue, Copilot starts an **agent session**. Copilot works autonomously in the background to complete the task and will create a pull request when it's finished. Because this process can take several minutes:
 
@@ -151,9 +153,14 @@ After you assign the issue, Copilot starts an **agent session**. Copilot works a
 2. Alternatively, you can track progress using Visual Studio Code, the GitHub CLI or GitHub Mobile, all of which provide session listings and log access.
 3. Continue with the remaining workshop activities while Copilot works. We will revisit the pull request later to review Copilot's changes and discuss the results.
 
-> **Patience:** Copilot has its own development environment and runs tests and linters before pushing changes. It may take a while to finish. Use the time to proceed with other exercises and check back on the effect of our work on the pull request.
+> **Patience:** Copilot has its own development environment and runs tests and linters before pushing changes. It may take a bit to complete. Use the time to proceed with other exercises and check back on the effect of our work on the pull request.
 
 ## Security Passport checkpoint
 
 Return to the [Security Passport](security-passport.md) and mark off the first section.  You should have completed the following stamps:
-TODO
+
+- [x] 2. Lock down your code
+- [x] 5. Know your ingredients
+- [x] 6. Write safe code
+- [x] 7. Stop secret leaks
+- [x] 9. Put up the guardrails

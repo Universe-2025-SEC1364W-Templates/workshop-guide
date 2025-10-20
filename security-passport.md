@@ -45,5 +45,3 @@ Treat this as your security passport: complete each mission and check the box to
 - [ ] 11. **Track and report**  
   - **How to win:** Use the Security Overview to generate monthly reports. Share progress and metrics with stakeholders and celebrate your achievements!  
   - **Refs:** NIST SSDF RV.2.1 (analyse vulnerabilities to plan remediation); CRA recommends ongoing monitoring and reporting of vulnerability handling.
-
-
