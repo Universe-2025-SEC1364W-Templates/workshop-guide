@@ -224,4 +224,12 @@ This exercise moves the storyline from **scanning code for vulnerabilities** to 
 
 ## Security Passport checkpoint
 
-Return to the [Security Passport](security-passport.md) and mark off the remaining sections. Congratulations, we've completed our security _world tour_! 🚀
+Return to the [Security Passport](security-passport.md) and mark off the remaining sections. You should have completed the following stamps:
+
+- [x] 3. Release with integrity
+- [x] 4. Keep the receipts
+- [x] 8. Handle vulns like a pro
+- [x] 10. Trust your builds
+- [x] 11. Track and report
+
+Congratulations, we've completed our security _world tour_! 🚀
