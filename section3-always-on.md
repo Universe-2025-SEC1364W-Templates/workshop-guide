@@ -174,10 +174,6 @@ gh auth login
 
 For easier copy/paste throughout the next few steps, set an environment variable equal to your organization name:
 
-```bash
-export GITHUB_ORG=<YOUR_ORG_NAME>
-```
-
 MacOS:
   
 ```bash
