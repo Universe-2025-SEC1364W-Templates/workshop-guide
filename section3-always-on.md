@@ -9,10 +9,10 @@ Security campaigns are a way to group alerts and prioritize them with developers
 
 For this exercise, we will use the Org level **Security** tab for creating **Campaigns**.
 
-1. In GitHub, navigate to your Organization **Security** tab.  
-2. Click on the **Campaigns** menu in the left-hand pane.  
-3. Click on the **Create campaign** button.  
-4. Select **From template**.  
+1. In GitHub, navigate to your Organization **Security** tab.
+2. Click on the **Campaigns** menu in the left-hand pane.
+3. Click on the **Create campaign** button.
+4. Select **From template**.
 5. In the subsequent menu, review the existing **Code** campaign templates:  
    1. Critical CodeQL Alerts  
    2. Mitre top 10 KEV  
@@ -25,6 +25,8 @@ For this exercise, we will use the Org level **Security** tab for creating **Cam
 
 Challenge: Rather than using a template, can you create a custom campaign for all the open vulnerabilities of severity `critical` and have `autofix` support?
 
+Read more about [security campaigns in our docs](https://docs.github.com/en/enterprise-cloud@latest/code-security/securing-your-organization/fixing-security-alerts-at-scale/about-security-campaigns).
+
 ## Exercise 10 - Security Overview
 
 Now that you've enabled CodeQL code scanning, secret scanning with push protection, and Dependabot, it's time to see how your GitHub Organization's Security Overview helps you and your leadership team track security posture.
@@ -33,8 +35,8 @@ In this exercise, you'll answer a set of predefined questions from your fictiona
 
 ### Step 1 - Open Security Overview
 
-1. Navigate to your organization in GitHub.  
-2. In the top navigation, click Security.  
+1. Navigate to your organization in GitHub.
+2. In the top navigation, click Security.
 3. You'll land on the Overview dashboard. This view summarizes alerts, trends, and feature adoption across your repositories.
 
 ### Step 2 - Answer the CISO's Questions
@@ -43,59 +45,61 @@ Use the following dashboards and metrics to find answers.
 
 **Q1: "What percentage of our repositories have CodeQL, Dependabot, and Secret scanning enabled?"**
 
-- Navigate to **Coverage**.  
+- Navigate to **Coverage**.
 - Review the adoption cards at the top and note the percentages of repositories with each feature turned on.
 
 **Q2: "How many open alerts do we currently have, and is the number going up or down?"**
 
-- In **Overview** -> **Detection**, check the **Open alerts over time** graph.  
+- In **Overview** -> **Detection**, check the **Open alerts over time** graph.
 - Change the time range to **Last 90 days**  
 - Note the total open alerts, severity breakdown, and whether the trend indicator is rising or falling.
 
 **Q3: "What is the average age of our remaining alerts?"**
 
-- In Detection, find the **Age of alerts** metric.  
+- In Detection, find the **Age of alerts** metric.
 - Report the number of days that alerts have been open on average.
 
 **Q4: "Which repositories are contributing the most to our risk right now?"**
 
-- Scroll down to **Impact analysis** -> **Repositories**.  
+- Scroll down to **Impact analysis** -> **Repositories**.
 - Identify the top repositories with the most open alerts.
 
 **Q5: "Are we keeping up with remediating vulnerabilities?"**
 
-- Switch to **Overview** -> **Remediation**.  
-- Check Closed alerts over time and Net resolve rate.  
+- Switch to **Overview** -> **Remediation**.
+- Check Closed alerts over time and Net resolve rate.
 - Share whether you're closing alerts faster than new ones are being created.
 
 **Q6: "How effective is push protection? Are developers bypassing it?"**
 
-- Navigate to **Secret scanning insights**.  
+- Navigate to **Secret scanning insights**.
 - Report how many secrets were blocked versus bypassed, and the most common reason for bypass.
+
+Read more about [Security Overview in our docs](https://docs.github.com/en/enterprise-cloud@latest/code-security/security-overview/about-security-overview
 
 ### Step 3 - (Optional) Deeper Dive
 
 If you finish early, explore one or more of these areas:
 
-- **Export data** - Use the Export CSV option to download current alert data for offline reporting.  
-- **Pull request alerts** - In **Overview** -> **Prevention**, review how many vulnerabilities were prevented in PRs vs. introduced.  
+- **Export data** - Use the Export CSV option to download current alert data for offline reporting.
+- **Pull request alerts** - In **Overview** -> **Prevention**, review how many vulnerabilities were prevented in PRs vs. introduced.
 - **Requests to bypass push protection** - If delegated bypass is enabled, check the Requests tab for open approvals.
 
 ## Exercise 11 - Signed SBOM
 
 Frameworks like NIST SSDF, SLSA, and the EU Cyber Resilience Act (CRA) all emphasize software supply chain transparency. Common requirements across them include:
 
-- NIST SSDF (PS.3.2): Collect and share provenance (SBOM).  
-- SLSA: Produce signed attestations for build provenance.  
+- NIST SSDF (PS.3.2): Collect and share provenance (SBOM).
+- SLSA: Produce signed attestations for build provenance.
 - CRA (Annex I Part II(1)): Mandate a machine-readable SBOM for all top-level dependencies.
 
 The point is to give software consumers confidence that:
 
-- The SBOM really came from the project's build system (authentic).  
-- The SBOM hasn't been tampered with (integrity).  
+- The SBOM really came from the project's build system (authentic).
+- The SBOM hasn't been tampered with (integrity).
 - The SBOM describes exactly what was in the build (traceability).
 
-In this exercise, we'll explore how to accomplish these goals all with the help of GitHub Actions, Artifact Attestations, and the GitHub CLI.
+In this exercise, we'll explore how to accomplish these goals all with the help of GitHub Actions, [Artifact Attestations](https://docs.github.com/en/enterprise-cloud@latest/actions/how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations), and the GitHub CLI.
 
 ### Step 1 - Generate an SBOM
 
@@ -217,6 +221,8 @@ gh attestation verify oci://ghcr.io/%GITHUB_ORG%/auth:1.0.0 --owner %GITHUB_ORG%
 ```
 
 This exercise moves the storyline from **scanning code for vulnerabilities** to **proving your supply chain is trustworthy**. You've now established the foundation for **transparent and verifiable software consumption**.
+
+Read more about [signed artifact attestations in our docs](https://docs.github.com/en/enterprise-cloud@latest/actions/how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations).
 
 ## Security Passport checkpoint
 
