@@ -222,7 +222,7 @@ gh attestation verify oci://ghcr.io/%GITHUB_ORG%/auth:1.0.0 --owner %GITHUB_ORG%
 
 This exercise moves the storyline from **scanning code for vulnerabilities** to **proving your supply chain is trustworthy**. You've now established the foundation for **transparent and verifiable software consumption**.
 
-Read more about [signed artifact attestations in our docs](https://docs.github.com/en/enterprise-cloud@latest/actions/how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations).
+Read more about [artifact attestations in our docs](https://docs.github.com/en/enterprise-cloud@latest/actions/how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations).
 
 ## Security Passport checkpoint
 
