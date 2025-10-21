@@ -75,7 +75,7 @@ Use the following dashboards and metrics to find answers.
 - Navigate to **Secret scanning insights**.
 - Report how many secrets were blocked versus bypassed, and the most common reason for bypass.
 
-Read more about [Security Overview in our docs](https://docs.github.com/en/enterprise-cloud@latest/code-security/security-overview/about-security-overview
+Read more about [Security Overview in our docs](https://docs.github.com/en/enterprise-cloud@latest/code-security/security-overview/about-security-overview)
 
 ### Step 3 - (Optional) Deeper Dive
 
