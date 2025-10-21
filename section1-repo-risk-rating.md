@@ -23,7 +23,7 @@ The **secret risk assessment** is a free on‑demand scan available to GitHub Te
 
 Read more about [secret risk assessment in our docs](https://docs.github.com/en/enterprise-cloud@latest/code-security/securing-your-organization/understanding-your-organizations-exposure-to-leaked-secrets/about-secret-risk-assessment).
 
-Only organization owners or security managers can run the scan, and it can be generated once every **90 days**. Read more about the secret risk assessment in [our docs](https://docs.github.com/en/enterprise-cloud@latest/code-security/securing-your-organization/understanding-your-organizations-exposure-to-leaked-secrets/viewing-the-secret-risk-assessment-report-for-your-organization).
+Only organization owners or security managers can run the scan, and it can be generated once every **90 days**.
 
 We have already triggered this scan on your organization before the session. Each participant receives a link to the finished report. Rather than running the scan yourself, focus on reviewing the results. Observe which Acme Corp. repositories contain leaked secrets and notice that many are the flagship projects (e.g., *mona‑gallery* and *mona*).
 
