@@ -32,7 +32,7 @@ This workshop is divided into three sections, each with multiple exercises. You 
 Let's get started!
 
 - [Section 1 - Repo risk rating](section1-repo-risk-rating.md)
-- [Section 2 - Security configurations](section2-security-configurations.md)
+- [Section 2 - Security configurations](section2-rolling-out-guardrails.md)
 - [Section 3 - Always on](section3-always-on.md)
 
 You can track your progress with the [Security Passport](security-passport.md). After each section, return to the Security Passport to mark off your progress. By the end of the workshop, you should have completed all the stamps on your Security Passport!
