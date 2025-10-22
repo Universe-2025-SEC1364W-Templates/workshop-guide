@@ -19,7 +19,7 @@ Read more about [applying custom security configurations in our docs](https://do
 
 ### Step 2 - Confirm the results on a sample repository
 
-After applying the configurations, open any repository and check that the security features are now active.
+After applying the configurations, open the **mona-gallery** repository and check that the security features are now active.
 
 1. Go to the repository's main page and click **Security**. You should see *Dependabot*, *Secret scanning* and *Code scanning* listed under **Vulnerability alerts**.
 2. Click **Dependabot** and verify there are alerts (if any). You can filter the alerts and click an individual alert to view details. From the alert page you can create a security update pull request to fix a vulnerable dependency or dismiss the alert with a reason.
@@ -67,6 +67,7 @@ jobs:
 ```
 
 This workflow uses the `actions/dependency-review-action@v4` to automatically scan dependency changes in pull requests and error if vulnerabilities are found. You can customize options such as severity thresholds, allowed or denied licenses, and scopes.
+
 3. Commit and push the workflow file to the `main` branch of your configuration repository.
 4. This repository should be public or the workflow we just created be accessible to all other repositories in your organization. You can check this in the repository **Settings -> Actions -> General** section under **Workflow permissions -> Access** make sure to select the `Accessible from repositories in the 'YOUR_ORG_NAME' organization` option.
 
