@@ -9,10 +9,11 @@ Now that you've created **Critical** and **Non‑critical** security configurati
 ### Step 1 - Apply the configurations using custom properties
 
 1. Navigate to **Settings -> Security** for your organization and open **Advanced Security -> Configurations**.
-2. In the **Apply configurations** table, filter repositories by their custom property. For example, type `props.Business_Criticality:Critical` in the search bar to list only critical repositories. Select these repositories and choose **Apply configuration -> Critical repos**. Repeat with `props.Business_Criticality:Normal` or `props.Business_Criticality:Low` for the *Non‑critical* configuration. When prompted, review license usage and click **Apply**.
+2. In the **Apply configurations** table, filter repositories by their custom property. For example, type `props.Business_Criticality:Critical` in the search bar to list only critical repositories. Select these repositories and choose **Apply configuration -> Critical repos**. Repeat with `props.Business_Criticality:Standard` or `props.Business_Criticality:Low` for the *Non‑critical* configuration. When prompted, review license usage and click **Apply**.
 3. Wait for the configurations to apply. You can see status indicators next to each repository.
 
-**Tip:** Filtering by custom properties allows you to apply configurations consistently without manually selecting each repository. GitHub's Rulesets feature, which we'll look at later, allows targeting by property as well.
+> [!TIP]
+> Filtering by custom properties allows you to apply configurations consistently without manually selecting each repository. GitHub's Rulesets feature, which we'll look at later, allows targeting by property as well.
 
 Read more about [applying custom security configurations in our docs](https://docs.github.com/en/code-security/securing-your-organization/enabling-security-features-in-your-organization/applying-a-custom-security-configuration).
 
@@ -110,7 +111,7 @@ The resulting ruleset should look like this:
 
 Repeat the steps above but target repositories with the `Standard` and `Low` properties. Set the enforcement status to **Evaluate**; this will still show optional status checks, and insights about which pushes would have failed, without enforcing them.
 
-The filtering allows us to create a single ruleset that applies to both `Standard` and `Low` repositories. We can achieve this by excluding `Critical` repositories using the query: `-props.Business_Criticality:Critical`.
+The filtering allows us to create a single ruleset that applies to both `Standard` and `Low` repositories. We can achieve this by excluding `Critical` repositories using the query: `-props.Business_Criticality:Critical`. Alternatively, you can use the filter `props.Business_Criticality:Standard,Low`.
 
 <img alt="non-critical repos ruleset target" src="imgs/section2-ruleset-non-critical-filter.png" />
 
