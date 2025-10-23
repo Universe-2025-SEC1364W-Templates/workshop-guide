@@ -14,16 +14,17 @@ For this exercise, we will use the Org level **Security** tab for creating **Cam
 3. Click on the **Create campaign** button.
 4. Select **From template**.
 5. In the subsequent menu, review the existing **Code** campaign templates:  
-   1. Critical CodeQL Alerts  
-   2. Mitre top 10 KEV  
-   3. SQL Injection  
-   4. Cross-site Scripting  
-6. Select the **Secrets** tab to view the existing **Secrets** campaign templates:  
-   1. Active secrets  
-   2. Inactive secrets  
-   3. Passwords
+   1. Critical CodeQL Alert
+   2. Mitre top 10 KEV
+   3. SQL Injection
+   4. Cross-site Scripting
+6. Select **Critical CodeQL Alert**.
+7. Click **Save as**, then select **Published campaign**.
+8. Choose a due date for the campaign (e.g. two weeks from today).
+9. Check the box to **Create issues for X repositories in this campaign**.
+10. Select **Publish campaign**.
 
-Challenge: Rather than using a template, can you create a custom campaign for all the open vulnerabilities of severity `critical` and have `autofix` support?
+Challenge: Navigate back to the **Campaigns** tab and select the **Secrets** tab to view the existing **Secrets** campaign templates. Cancel and use the secret scanning alert filter to create a campaign based on the active, most commonly leaked secret type in your organization.
 
 Read more about [security campaigns in our docs](https://docs.github.com/en/enterprise-cloud@latest/code-security/securing-your-organization/fixing-security-alerts-at-scale/about-security-campaigns).
 
@@ -103,7 +104,7 @@ In this exercise, we'll explore how to accomplish these goals all with the help 
 
 ### Step 1 - Generate an SBOM
 
-We'll be working in the **mona-gallery** repo for this exercise. Start by adding the following step at the end of the **release-attestation.yml** GitHub Actions workflow file to create an SBOM for each container image:
+We'll be working in the **mona-gallery** repo for this exercise. Start by adding the following step at the end of the **.github/release-attestation.yml** GitHub Actions workflow file to create an SBOM for each container image:
 
 ```yaml
 - name: Generate SBOM for built image
@@ -155,7 +156,8 @@ Create a personal access token with the **read:packages** scope:
 - Navigate to [https://github.com/settings/tokens](https://github.com/settings/tokens)
 - Click **Generate new token** -> **Generate new token (Classic)**  
 - Select the **read:packages** checkbox  
-- Click the **Generate token** button  
+- Click the **Generate token** button
+- Next to the token value, select **Configure SSO**, then select **Authorize** next to your organization
 - Copy the token value to your clipboard
 
 In your terminal, run the following command to authenticate to [ghcr.io](http://ghcr.io):
