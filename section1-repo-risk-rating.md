@@ -25,7 +25,7 @@ Read more about [secret risk assessment in our docs](https://docs.github.com/en/
 
 Only organization owners or security managers can run the scan, and it can be generated once every **90 days**.
 
-We have already triggered this scan on your organization before the session. Each participant receives a link to the finished report. Rather than running the scan yourself, focus on reviewing the results. Observe which Acme Corp. repositories contain leaked secrets and notice that many are the flagship projects (e.g., *mona‑gallery* and *mona*).
+We have already triggered this scan on your organization before the session. Each participant receives a link to the finished report. Rather than running the scan yourself, focus on reviewing the results. Observe which Acme Corp. repositories contain leaked secrets and notice that many are the flagship projects (e.g., *mona‑gallery* and *mono*).
 
 To run a similar security risk assessment on your own organization(s) after this workshop, you would need to:
 
@@ -44,7 +44,7 @@ To run a similar security risk assessment on your own organization(s) after this
 
 Before applying security controls, decide which repositories are **business‑critical**, **standard** or **low risk**. This risk rating directly maps to how strong the security controls should be. For Acme, the team prepared a document listing each repository and its category. Review it and think about:
 
-- **Critical (business‑critical)** - contains customer data, production infrastructure or is widely used (e.g., *mona‑gallery*, *mona*, *terragoat‑iac*). A compromise of these repos has severe impact.
+- **Critical (business‑critical)** - contains customer data, production infrastructure or is widely used (e.g., *mona‑gallery*, *mono*, *terragoat‑iac*). A compromise of these repos has severe impact.
 - **Standard** - internal tools that support the business but aren't directly customer‑facing (e.g., *juice‑shop*, *moshi* library).
 - **Low risk** - early‑stage experiments, documentation or configuration repos.
 
