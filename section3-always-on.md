@@ -5,6 +5,8 @@
 
 ## Exercise 9 - Fix Smarter, Together
 
+### Step 1 - Create a code scanning alert campaign
+
 Security campaigns are a way to group alerts and prioritize them with developers, so you can focus on remediation of those select vulnerabilities. In this lab we will create a security campaign for identified security alerts in the default branch and see how the Campaigns feature in GHAS will help encourage focussed remediation effort from development teams. With this feature you can fix security alerts at scale by creating security campaigns and collaborating with developers to burn down your security backlog.
 
 For this exercise, we will use the Org level **Security** tab for creating **Campaigns**.
@@ -23,6 +25,8 @@ For this exercise, we will use the Org level **Security** tab for creating **Cam
 8. Choose a due date for the campaign (e.g. two weeks from today).
 9. Check the box to **Create issues for X repositories in this campaign**.
 10. Select **Publish campaign**.
+
+### Step 2 - (Optional) Create a secret scanning alert campaign
 
 Challenge: Navigate back to the **Campaigns** tab and select the **Secrets** tab to view the existing **Secrets** campaign templates. Cancel and use the secret scanning alert filter to create a campaign based on the active, most commonly leaked secret type in your organization.
 
