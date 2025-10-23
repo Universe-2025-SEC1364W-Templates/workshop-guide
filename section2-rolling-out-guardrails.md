@@ -9,7 +9,7 @@ Now that you've created **Critical** and **Non‑critical** security configurati
 ### Step 1 - Apply the configurations using custom properties
 
 1. Navigate to **Settings -> Security** for your organization and open **Advanced Security -> Configurations**.
-2. In the **Apply configurations** table, filter repositories by their custom property. For example, type `props.critical=true` in the search bar to list only critical repositories. Select these repositories and choose **Apply configuration -> Critical repos**. Repeat with `props.standard=true` or `props.low=true` for the *Non‑critical* configuration. When prompted, review license usage and click **Apply**.
+2. In the **Apply configurations** table, filter repositories by their custom property. For example, type `props.Business_Criticality:Critical` in the search bar to list only critical repositories. Select these repositories and choose **Apply configuration -> Critical repos**. Repeat with `props.Business_Criticality:Normal` or `props.Business_Criticality:Low` for the *Non‑critical* configuration. When prompted, review license usage and click **Apply**.
 3. Wait for the configurations to apply. You can see status indicators next to each repository.
 
 **Tip:** Filtering by custom properties allows you to apply configurations consistently without manually selecting each repository. GitHub's Rulesets feature, which we'll look at later, allows targeting by property as well.
@@ -22,7 +22,7 @@ After applying the configurations, open the **mona-gallery** repository and chec
 
 1. Go to the repository's main page and click **Security**. You should see *Dependabot*, *Secret scanning* and *Code scanning* listed under **Vulnerability alerts**.
 2. Click **Dependabot** and verify there are alerts (if any). You can filter the alerts and click an individual alert to view details. From the alert page you can create a security update pull request to fix a vulnerable dependency or dismiss the alert with a reason.
-3. Click **Secret scanning**. Open an alert if present. To resolve an alert, rotate and revoke the leaked secret, then select **Close as** to record the appropriate reason and optionally add a comment. 
+3. Click **Secret scanning**. Open an alert if present. To resolve an alert, rotate and revoke the leaked secret, then select **Close as** to record the appropriate reason and optionally add a comment.
 4. Click **Code scanning**. Open a code scanning alert. If Copilot Autofix can suggest a fix, click **Generate fix**, then **Create PR with fix**. Alternatively, manually update the code and open a pull request. To dismiss an alert you decide not to address, click **Dismiss alert**, choose a reason and optionally add a comment.
 
 ### Discussion - Beyond initial scan
