@@ -1,4 +1,3 @@
-
 # Rolling out guardrails
 
 <img src="imgs/section2.png" alt="Section 2: Rolling out guardrails"/>
@@ -19,7 +18,7 @@ Read more about [applying custom security configurations in our docs](https://do
 
 ### Step 2 - Confirm the results on a sample repository
 
-After applying the configurations, open any repository and check that the security features are now active.
+After applying the configurations, open the **mona-gallery** repository and check that the security features are now active.
 
 1. Go to the repository's main page and click **Security**. You should see *Dependabot*, *Secret scanning* and *Code scanning* listed under **Vulnerability alerts**.
 2. Click **Dependabot** and verify there are alerts (if any). You can filter the alerts and click an individual alert to view details. From the alert page you can create a security update pull request to fix a vulnerable dependency or dismiss the alert with a reason.
@@ -67,6 +66,7 @@ jobs:
 ```
 
 This workflow uses the `actions/dependency-review-action@v4` to automatically scan dependency changes in pull requests and error if vulnerabilities are found. You can customize options such as severity thresholds, allowed or denied licenses, and scopes.
+
 3. Commit and push the workflow file to the `main` branch of your configuration repository.
 4. This repository should be public or the workflow we just created be accessible to all other repositories in your organization. You can check this in the repository **Settings -> Actions -> General** section under **Workflow permissions -> Access** make sure to select the `Accessible from repositories in the 'YOUR_ORG_NAME' organization` option.
 
@@ -85,7 +85,7 @@ Read more about [rulesets in our docs](https://docs.github.com/en/enterprise-clo
 1. Navigate to your organization's **Settings -> Repository -> Rulesets**.
 2. Click **New ruleset -> New branch ruleset**.
 3. Give the ruleset a name such as **Critical Repos Ruleset** and set the enforcement status to **Active**.
-4. In the **Target repositories** section, choose **Repositories matching a filter**. Add a filter for your custom property: select the property (e.g., `critical`) and set the value to `true`, or use the query syntax `props.critical=true`. This ensures that only repositories tagged as critical are affected.
+4. In the **Target repositories** section, choose **Repositories matching a filter**. Add a filter for your custom property: select the property (e.g., `Business_Criticality`) and set the value to `Critical`, or use the query syntax `props.Business_Criticality=Critical`. This ensures that only repositories tagged as critical are affected.
 5. Under **Target branches**, select **Include default branch** (you can add other branch patterns if needed).
 6. In the **Rules** section:  
    * Leave the two default checks enabled:  
@@ -95,27 +95,36 @@ Read more about [rulesets in our docs](https://docs.github.com/en/enterprise-clo
      1. **Require a pull request before merging** - enforce that all changes go through pull requests.
         1. Select **Require review from Code Owners**  
         2. Select **Automatically request Copilot code review**  
-     2. **Require code scanning results** - require that no open code scanning alerts of a given severity exist before merging. Add CodeQL as a tool and choose an appropriate severity threshold for critical repositories.
-     3. **Require workflows to pass before merging** - add the `dependency-review` workflow as a required check. Select the **mission-control** repository and select **.github/workflows/dependency-review.yml** from the list.
+     2. **Require workflows to pass before merging** - add the `dependency-review` workflow as a required check. Select the **mission-control** repository and select **.github/workflows/dependency-review.yml** from the list.
+     3. **Require code scanning results** - require that no open code scanning alerts of a given severity exist before merging. Add CodeQL as a tool and choose an appropriate severity threshold for critical repositories.
      4. In the section when defining required workflows you will want to select **Do not require status checks on creation** to avoid friction and failed workflows when a new empty repository or branch is created.
 7. Click **Create** to finalize the ruleset.
 
+The resulting ruleset should look like this:
+
+<img alt="critical repos ruleset 1" src="imgs/section2-ruleset-1.png" />
+
+<img alt="critical repos ruleset 2" src="imgs/section2-ruleset-2.png" />
+
 ### Step 2 - Create a ruleset for non‑critical repositories
 
-Repeat the steps above but target repositories with the `standard` and `low` properties. Set the enforcement status to **Evaluate**; this will show in insights which pushes would fail without enforcing them.
+Repeat the steps above but target repositories with the `Standard` and `Low` properties. Set the enforcement status to **Evaluate**; this will still show optional status checks, and insights about which pushes would have failed, without enforcing them.
+
+The filtering allows us to create a single ruleset that applies to both `Standard` and `Low` repositories. We can achieve this by excluding `Critical` repositories using the query: `-props.Business_Criticality:Critical`.
+
+<img alt="non-critical repos ruleset target" src="imgs/section2-ruleset-non-critical-filter.png" />
 
 In the rules section:
 
 * Include the same **Require pull request before merging** rule.
 * Require the **dependency-review-action** status check so that new vulnerabilities are still blocked.
 * You can make the severity threshold for code scanning results less restrictive or omit it entirely.
-* Consider setting the ruleset to **Evaluate** first; this will show in insights which pushes would fail without enforcing them.
 
 ### Step 3 - Verify the ruleset behavior
 
 Once the rulesets are active, create a pull request in a repository targeted by the ruleset:
 
-1. Add a new dependency with a known vulnerability (for example, bump a package to a vulnerable version) and push the branch. You can use [GitHub Advisory Database](https://github.com/advisories) to find a *bad* candidate\!  
+1. Add a new dependency with a known vulnerability (for example, bump a package to a vulnerable version) and push the branch. You can use [GitHub Advisory Database](https://github.com/advisories) to find a *bad* candidate!  
    * For example, in **mona-gallery/frontend/package.json**, add the following dependency to the "dependencies" block: **"flowise": "3.0.5"**  
 2. The pull request should display a failing **Dependency Review** status check; merging will be blocked until the dependency is removed or updated.
 3. If you attempt to merge while code scanning alerts exist at the configured severity, merging is also blocked due to **code scanning merge protection**.
@@ -137,7 +146,7 @@ Read more about integrating third-party tools in code scanning [here](https://do
 
 ## Exercise 8 - Run a simulation
 
-In this final exercise you'll put everything together by letting the **Copilot coding agent** work on a real issue in the `mona‑gallery` repository. You'll assign the agent to a pre‑created issue that describes a new feature and then observe how Copilot autonomously implements the changes.
+In this final exercise you'll put everything together by letting the **Copilot coding agent** work on a real issue in the `mona‑gallery` repository. You'll assign the agent to a pre‑created issue that describes a new feature and then observe how Copilot autonomously implements it and how our controls take effect.
 
 ### Context: the feature to implement
 

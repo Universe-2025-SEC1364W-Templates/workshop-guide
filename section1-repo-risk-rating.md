@@ -65,7 +65,7 @@ The following table summarizes each repository in the Acme Corp organization and
 
 ### How to use this classification
 
-For **Exercise 3** you will create custom properties for each risk tier (e.g., `critical`, `standard`, and `low`) and tag the repositories accordingly. When creating security configurations in **Exercise 4**, apply a stricter configuration to all critical repositories and a more flexible configuration to standard and low‑risk repositories.
+For **Exercise 3** you will create a custom property for "business criticality" with options for each risk tier (e.g., `Critical`, `Standard`, and `Low`) and tag the repositories accordingly. When creating security configurations in **Exercise 4**, apply a stricter configuration to all critical repositories and a more flexible configuration to standard and low‑risk repositories.
 
 ## Exercise 3 - Creating Custom Properties
 
@@ -77,17 +77,20 @@ Custom properties add metadata to repositories so you can filter them later when
 2. Next to your organization, click **Settings**.
 3. In the sidebar under **Code, planning, and automation -> Repository**, click **Custom properties**.
 4. Click **New property**.
-5. Enter a **Name** (no spaces) and optional description. For the workshop we recommend creating three boolean properties: `critical`, `standard` and `low`. Select **True/False (Boolean)** as the type. Leave the other options unchecked.
-6. Click **Save property**.
+5. Enter a **Name** (no spaces) and optional description. For the workshop we recommend creating a single select `Business_Criticality` property with allowed values `Critical`, `Standard` and `Low`. This keeps metadata normalized and simplifies reporting. Leave the other options unchecked.
 
-**Alternative:** Instead of three booleans, you could define a single `risk-category` property with allowed values `critical`, `standard` and `low` (single select or multi select). This keeps metadata normalized and simplifies reporting.
+The custom property configuration should look like this:
+
+<img alt="create custom property" src="imgs/section1-custom-property.png" />
+
+7. Click **Save property**.
 
 ### Step 2 - Set property values for repositories
 
 1. Return to **Custom properties** in your organization settings.
 2. Select the **Set values** tab.
 3. Choose one or more repositories and click **Edit properties**.
-4. In the dialog, set each property's value according to the categorization document and click **Save changes**.
+4. In the dialog, set the property's value according to the categorization document and click **Save changes**.
 
 After this exercise, each repository has metadata indicating whether it's critical, standard or low risk. You can search or filter repositories by these properties using the **Repositories** page (type `prop` in the search bar).
 
@@ -107,7 +110,8 @@ This exercise creates two configurations:
 1. Navigate to your organization settings and choose **Advanced Security -> Configurations**.
 2. Click **New configuration**.
 3. Provide a **Name** like *Critical repos* and a description explaining that it applies to business‑critical repositories.
-4. Under **Secret Scanning**:  
+4. Next to **GitHub Advanced Security features**, select **Include**.
+5. Under **Secret Scanning**:  
    - Enable **Alerts** (this turns on secret scanning).
    - Enable **Validity checks** to reduce test if found secrets are still valid and help with prioritization.
    - Enable **Non‑provider patterns** to detect generic secrets like private keys.
@@ -115,14 +119,22 @@ This exercise creates two configurations:
    - Enable **Push protection** to block commits that contain secrets. Push protection proactively scans code during the push and prevents secrets from being committed.
      - Set **Bypass privileges** to `Specific actors` and select Repository admin. This would require an approval from an admin if a bypass of push protection block is required.
    - Enable **Prevent direct alert dismissals** to have better controls over dimissal of secret scanning alerts given the recent breach. This setting will require actors to submit requests for alert dismissals.
-5. Under **Code Scanning**:  
+6. Under **Code Scanning**:  
    - Enable **Default setup** for CodeQL code scanning. CodeQL identifies vulnerabilities and errors in your code and displays results as alerts.
+   - Next to **Runner type**, select **Standard** so we use the default GitHub-hosted runners.
    - Keep **Prevent direct alert dismissals** as `Not set` as we do not want to increase unnecessary friction with developers with the introduction of CodeQL.
-6. Under **Dependency Scanning**:  
+7. Under **Dependency Scanning**:  
    - Ensure **Dependency graph**, **Automatic dependency submission**, **Dependabot alerts** and **Dependabot security updates** are enabled. The dependency graph analyzes the manifest/lock files to list dependencies and highlight vulnerabilities, and Dependabot alerts notify you when you depend on a vulnerable package. Dependabot security updates can automatically open pull requests to upgrade vulnerable dependencies.
-7. Enable **Private vulnerability reporting** to receive reports from researchers for public OSS repositories.
-8. In the **Policy** section, select **Use as default for newly created repositories** to `None` as we don't want to treat every new repository as **Critical** and set **Enforce configuration** to block repository owners from disabling any enabled features (`Enforce`).
-9. Click **Save configuration**.
+8. Enable **Private vulnerability reporting** to receive reports from researchers for public OSS repositories.
+9. In the **Policy** section, select **Use as default for newly created repositories** to `None` as we don't want to treat every new repository as **Critical** and set **Enforce configuration** to block repository owners from disabling any enabled features (`Enforce`).
+
+The resulting security configuration should look like this:
+
+<img alt="security configuration settings" src="imgs/section1-security-config-1.png" />
+
+<img alt="security configuration settings" src="imgs/section1-security-config-2.png" />
+
+10. Click **Save configuration**.
 
 ### Step 2 - Create the **Non‑critical** security configuration
 
