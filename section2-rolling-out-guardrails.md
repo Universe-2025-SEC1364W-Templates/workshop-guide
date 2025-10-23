@@ -169,6 +169,7 @@ After you assign the issue, Copilot starts an **agent session**. Copilot works a
 2. Alternatively, you can track progress using Visual Studio Code, the GitHub CLI or GitHub Mobile, all of which provide session listings and log access.
 3. Continue with the remaining workshop activities while Copilot works. We will revisit the pull request later to review Copilot's changes and discuss the results.
 
+> [!NOTE]
 > **Patience:** Copilot has its own development environment and runs tests and linters before pushing changes. It may take a bit to complete. Use the time to proceed with other exercises and check back on the effect of our work on the pull request.
 
 ## Security Passport checkpoint
