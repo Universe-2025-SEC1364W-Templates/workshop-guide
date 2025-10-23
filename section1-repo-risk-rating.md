@@ -65,7 +65,7 @@ The following table summarizes each repository in the Acme Corp organization and
 
 ### How to use this classification
 
-For **Exercise 3** you will create custom properties for each risk tier (e.g., `critical`, `standard`, and `low`) and tag the repositories accordingly. When creating security configurations in **Exercise 4**, apply a stricter configuration to all critical repositories and a more flexible configuration to standard and low‑risk repositories.
+For **Exercise 3** you will create a custom property for "business criticality" with options for each risk tier (e.g., `Critical`, `Standard`, and `Low`) and tag the repositories accordingly. When creating security configurations in **Exercise 4**, apply a stricter configuration to all critical repositories and a more flexible configuration to standard and low‑risk repositories.
 
 ## Exercise 3 - Creating Custom Properties
 
@@ -77,17 +77,15 @@ Custom properties add metadata to repositories so you can filter them later when
 2. Next to your organization, click **Settings**.
 3. In the sidebar under **Code, planning, and automation -> Repository**, click **Custom properties**.
 4. Click **New property**.
-5. Enter a **Name** (no spaces) and optional description. For the workshop we recommend creating three boolean properties: `critical`, `standard` and `low`. Select **True/False (Boolean)** as the type. Leave the other options unchecked.
+5. Enter a **Name** (no spaces) and optional description. For the workshop we recommend creating a single `Business_Criticality` property with allowed values `Critical`, `Standard` and `Low` (single select). This keeps metadata normalized and simplifies reporting. Leave the other options unchecked.
 6. Click **Save property**.
-
-**Alternative:** Instead of three booleans, you could define a single `risk-category` property with allowed values `critical`, `standard` and `low` (single select or multi select). This keeps metadata normalized and simplifies reporting.
 
 ### Step 2 - Set property values for repositories
 
 1. Return to **Custom properties** in your organization settings.
 2. Select the **Set values** tab.
 3. Choose one or more repositories and click **Edit properties**.
-4. In the dialog, set each property's value according to the categorization document and click **Save changes**.
+4. In the dialog, set the property's value according to the categorization document and click **Save changes**.
 
 After this exercise, each repository has metadata indicating whether it's critical, standard or low risk. You can search or filter repositories by these properties using the **Repositories** page (type `prop` in the search bar).
 
