@@ -78,7 +78,12 @@ Custom properties add metadata to repositories so you can filter them later when
 3. In the sidebar under **Code, planning, and automation -> Repository**, click **Custom properties**.
 4. Click **New property**.
 5. Enter a **Name** (no spaces) and optional description. For the workshop we recommend creating a single `Business_Criticality` property with allowed values `Critical`, `Standard` and `Low` (single select). This keeps metadata normalized and simplifies reporting. Leave the other options unchecked.
-6. Click **Save property**.
+
+The custom property configuration should look like this:
+
+<img width="877" height="761" alt="Screenshot 2025-10-22 at 9 49 21 PM" src="https://github.com/user-attachments/assets/fe22a649-ce33-442f-b111-d5f3250aea30" />
+
+7. Click **Save property**.
 
 ### Step 2 - Set property values for repositories
 
@@ -122,6 +127,13 @@ This exercise creates two configurations:
    - Ensure **Dependency graph**, **Automatic dependency submission**, **Dependabot alerts** and **Dependabot security updates** are enabled. The dependency graph analyzes the manifest/lock files to list dependencies and highlight vulnerabilities, and Dependabot alerts notify you when you depend on a vulnerable package. Dependabot security updates can automatically open pull requests to upgrade vulnerable dependencies.
 8. Enable **Private vulnerability reporting** to receive reports from researchers for public OSS repositories.
 9. In the **Policy** section, select **Use as default for newly created repositories** to `None` as we don't want to treat every new repository as **Critical** and set **Enforce configuration** to block repository owners from disabling any enabled features (`Enforce`).
+
+The resulting security configuration should look like this:
+
+<img width="763" height="737" alt="Screenshot 2025-10-22 at 9 54 55 PM" src="https://github.com/user-attachments/assets/a19d6607-a446-4250-82d8-11095c9bb43b" />
+
+<img width="759" height="769" alt="Screenshot 2025-10-22 at 9 55 18 PM" src="https://github.com/user-attachments/assets/50cbfa23-d1a9-4595-91fa-f75cb087abc6" />
+
 10. Click **Save configuration**.
 
 ### Step 2 - Create the **Non‑critical** security configuration
