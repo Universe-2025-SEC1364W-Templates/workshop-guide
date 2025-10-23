@@ -77,11 +77,11 @@ Custom properties add metadata to repositories so you can filter them later when
 2. Next to your organization, click **Settings**.
 3. In the sidebar under **Code, planning, and automation -> Repository**, click **Custom properties**.
 4. Click **New property**.
-5. Enter a **Name** (no spaces) and optional description. For the workshop we recommend creating a single `Business_Criticality` property with allowed values `Critical`, `Standard` and `Low` (single select). This keeps metadata normalized and simplifies reporting. Leave the other options unchecked.
+5. Enter a **Name** (no spaces) and optional description. For the workshop we recommend creating a single select `Business_Criticality` property with allowed values `Critical`, `Standard` and `Low`. This keeps metadata normalized and simplifies reporting. Leave the other options unchecked.
 
 The custom property configuration should look like this:
 
-<img width="877" height="761" alt="Screenshot 2025-10-22 at 9 49 21 PM" src="https://github.com/user-attachments/assets/fe22a649-ce33-442f-b111-d5f3250aea30" />
+<img alt="create custom property" src="imgs/section1-custom-property.png" />
 
 7. Click **Save property**.
 
@@ -130,9 +130,9 @@ This exercise creates two configurations:
 
 The resulting security configuration should look like this:
 
-<img width="763" height="737" alt="Screenshot 2025-10-22 at 9 54 55 PM" src="https://github.com/user-attachments/assets/a19d6607-a446-4250-82d8-11095c9bb43b" />
+<img alt="security configuration settings" src="imgs/section1-security-config-1.png" />
 
-<img width="759" height="769" alt="Screenshot 2025-10-22 at 9 55 18 PM" src="https://github.com/user-attachments/assets/50cbfa23-d1a9-4595-91fa-f75cb087abc6" />
+<img alt="security configuration settings" src="imgs/section1-security-config-2.png" />
 
 10. Click **Save configuration**.
 

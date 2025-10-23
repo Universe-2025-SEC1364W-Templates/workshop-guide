@@ -104,7 +104,7 @@ In this exercise, we'll explore how to accomplish these goals all with the help 
 
 ### Step 1 - Generate an SBOM
 
-We'll be working in the **mona-gallery** repo for this exercise. Start by adding the following step at the end of the **.github/release-attestation.yml** GitHub Actions workflow file to create an SBOM for each container image:
+We'll be working in the **mona-gallery** repo for this exercise. Start by adding the following step at the end of the **.github/workflows/release-attestation.yml** GitHub Actions workflow file to create an SBOM for each container image:
 
 ```yaml
 - name: Generate SBOM for built image

@@ -95,14 +95,24 @@ Read more about [rulesets in our docs](https://docs.github.com/en/enterprise-clo
      1. **Require a pull request before merging** - enforce that all changes go through pull requests.
         1. Select **Require review from Code Owners**  
         2. Select **Automatically request Copilot code review**  
-     2. **Require code scanning results** - require that no open code scanning alerts of a given severity exist before merging. Add CodeQL as a tool and choose an appropriate severity threshold for critical repositories.
-     3. **Require workflows to pass before merging** - add the `dependency-review` workflow as a required check. Select the **mission-control** repository and select **.github/workflows/dependency-review.yml** from the list.
+     2. **Require workflows to pass before merging** - add the `dependency-review` workflow as a required check. Select the **mission-control** repository and select **.github/workflows/dependency-review.yml** from the list.
+     3. **Require code scanning results** - require that no open code scanning alerts of a given severity exist before merging. Add CodeQL as a tool and choose an appropriate severity threshold for critical repositories.
      4. In the section when defining required workflows you will want to select **Do not require status checks on creation** to avoid friction and failed workflows when a new empty repository or branch is created.
 7. Click **Create** to finalize the ruleset.
+
+The resulting ruleset should look like this:
+
+<img alt="critical repos ruleset 1" src="imgs/section2-ruleset-1.png" />
+
+<img alt="critical repos ruleset 2" src="imgs/section2-ruleset-2.png" />
 
 ### Step 2 - Create a ruleset for non‑critical repositories
 
 Repeat the steps above but target repositories with the `Standard` and `Low` properties. Set the enforcement status to **Evaluate**; this will still show optional status checks, and insights about which pushes would have failed, without enforcing them.
+
+The filtering allows us to create a single ruleset that applies to both `Standard` and `Low` repositories. We can achieve this by excluding `Critical` repositories using the query: `-props.Business_Criticality:Critical`.
+
+<img alt="non-critical repos ruleset target" src="imgs/section2-ruleset-non-critical-filter.png" />
 
 In the rules section:
 
@@ -114,7 +124,7 @@ In the rules section:
 
 Once the rulesets are active, create a pull request in a repository targeted by the ruleset:
 
-1. Add a new dependency with a known vulnerability (for example, bump a package to a vulnerable version) and push the branch. You can use [GitHub Advisory Database](https://github.com/advisories) to find a *bad* candidate\!  
+1. Add a new dependency with a known vulnerability (for example, bump a package to a vulnerable version) and push the branch. You can use [GitHub Advisory Database](https://github.com/advisories) to find a *bad* candidate!  
    * For example, in **mona-gallery/frontend/package.json**, add the following dependency to the "dependencies" block: **"flowise": "3.0.5"**  
 2. The pull request should display a failing **Dependency Review** status check; merging will be blocked until the dependency is removed or updated.
 3. If you attempt to merge while code scanning alerts exist at the configured severity, merging is also blocked due to **code scanning merge protection**.
@@ -136,7 +146,7 @@ Read more about integrating third-party tools in code scanning [here](https://do
 
 ## Exercise 8 - Run a simulation
 
-In this final exercise you'll put everything together by letting the **Copilot coding agent** work on a real issue in the `mona‑gallery` repository. You'll assign the agent to a pre‑created issue that describes a new feature and then observe how Copilot autonomously implements the changes.
+In this final exercise you'll put everything together by letting the **Copilot coding agent** work on a real issue in the `mona‑gallery` repository. You'll assign the agent to a pre‑created issue that describes a new feature and then observe how Copilot autonomously implements it and how our controls take effect.
 
 ### Context: the feature to implement
 
