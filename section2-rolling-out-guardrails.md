@@ -1,4 +1,3 @@
-
 # Rolling out guardrails
 
 <img src="imgs/section2.png" alt="Section 2: Rolling out guardrails"/>
@@ -86,7 +85,7 @@ Read more about [rulesets in our docs](https://docs.github.com/en/enterprise-clo
 1. Navigate to your organization's **Settings -> Repository -> Rulesets**.
 2. Click **New ruleset -> New branch ruleset**.
 3. Give the ruleset a name such as **Critical Repos Ruleset** and set the enforcement status to **Active**.
-4. In the **Target repositories** section, choose **Repositories matching a filter**. Add a filter for your custom property: select the property (e.g., `critical`) and set the value to `true`, or use the query syntax `props.critical=true`. This ensures that only repositories tagged as critical are affected.
+4. In the **Target repositories** section, choose **Repositories matching a filter**. Add a filter for your custom property: select the property (e.g., `Business_Criticality`) and set the value to `Critical`, or use the query syntax `props.Business_Criticality=Critical`. This ensures that only repositories tagged as critical are affected.
 5. Under **Target branches**, select **Include default branch** (you can add other branch patterns if needed).
 6. In the **Rules** section:  
    * Leave the two default checks enabled:  
@@ -103,14 +102,13 @@ Read more about [rulesets in our docs](https://docs.github.com/en/enterprise-clo
 
 ### Step 2 - Create a ruleset for non‑critical repositories
 
-Repeat the steps above but target repositories with the `standard` and `low` properties. Set the enforcement status to **Evaluate**; this will show in insights which pushes would fail without enforcing them.
+Repeat the steps above but target repositories with the `Standard` and `Low` properties. Set the enforcement status to **Evaluate**; this will still show optional status checks, and insights about which pushes would have failed, without enforcing them.
 
 In the rules section:
 
 * Include the same **Require pull request before merging** rule.
 * Require the **dependency-review-action** status check so that new vulnerabilities are still blocked.
 * You can make the severity threshold for code scanning results less restrictive or omit it entirely.
-* Consider setting the ruleset to **Evaluate** first; this will show in insights which pushes would fail without enforcing them.
 
 ### Step 3 - Verify the ruleset behavior
 
