@@ -86,7 +86,7 @@ Read more about [rulesets in our docs](https://docs.github.com/en/enterprise-clo
 1. Navigate to your organization's **Settings -> Repository -> Rulesets**.
 2. Click **New ruleset -> New branch ruleset**.
 3. Give the ruleset a name such as **Critical Repos Ruleset** and set the enforcement status to **Active**.
-4. In the **Target repositories** section, choose **Repositories matching a filter**. Add a filter for your custom property: select the property (e.g., `Business_Criticality`) and set the value to `Critical`, or use the query syntax `props.Business_Criticality=Critical`. This ensures that only repositories tagged as critical are affected.
+4. In the **Target repositories** section, choose **Repositories matching a filter**. Add a filter for your custom property: select the property (e.g., `Business_Criticality`) and set the value to `Critical`, or use the query syntax `props.Business_Criticality:Critical`. This ensures that only repositories tagged as critical are affected.
 5. Under **Target branches**, select **Include default branch** (you can add other branch patterns if needed).
 6. In the **Rules** section:  
    * Leave the two default checks enabled:  
